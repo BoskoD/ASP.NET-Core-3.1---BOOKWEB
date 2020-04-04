@@ -10,7 +10,7 @@ namespace BookListRazor
 {
     public class EditModel : PageModel
     {
-        private readonly ApplicationDbContext _db;
+        private ApplicationDbContext _db;
 
         public EditModel(ApplicationDbContext db)
         {
@@ -31,8 +31,8 @@ namespace BookListRazor
             {
                 var bookFromDb = await _db.Book.FindAsync(Book.Id);
                 bookFromDb.Name = Book.Name;
-                bookFromDb.Name = Book.Author;
-                bookFromDb.Name = Book.Course;
+                bookFromDb.Author = Book.Author;
+                bookFromDb.Course = Book.Course;
 
                 await _db.SaveChangesAsync();
 
